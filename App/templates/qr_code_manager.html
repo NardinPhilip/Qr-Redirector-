@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage QR Code</title>
+</head>
+<body>
+    <h1>Manage QR Code Link</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="target_url">Destination URL:</label>
+        <input type="url" name="target_url" value="{{ qr_link.target_url }}" required>
+        <button type="submit">Update URL</button>
+    </form>
+    
+    <h2>Current URL: {{ qr_link.target_url }}</h2>
+    
+    <a href="{% url 'download_qr' %}" download>Download QR Code</a>
+    
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Download the QR code using the link above</li>
+        <li>Print the QR code as needed</li>
+        <li>Update the destination URL anytime using this form</li>
+    </ol>
+</body>
+</html>
